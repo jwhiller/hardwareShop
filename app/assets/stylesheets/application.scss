@@ -15,7 +15,23 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-
+body{
+  background-color: rgb(205, 205, 205);
+  color: black;
+}
 .well {
   height: 350px;
+  color: black;
+}
+
+.well img{
+  border-radius: 5px;
+}
+
+.text-center a{
+  color: black
+}
+
+.nav{
+  color: white;
 }

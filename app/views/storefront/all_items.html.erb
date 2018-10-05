@@ -1,6 +1,12 @@
 <h1>Not Your Average Hardware Store</h1>
 <p>If you think we have it...we probably do not</p>
 
+<% if current_user.nil? %>
+<h5>Take a look around</h5>
+<% else %>
+<h5> <strong><%= current_user.name %></strong>, have a look around</h5>
+<% end %>
+
 <div class="row">
   <% @products.each do |product| %>
 

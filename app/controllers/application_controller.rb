@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :categories
+  before_action :categories, :items_in_cart
 
   helper_method :current_order
 
@@ -18,7 +18,11 @@ class ApplicationController < ActionController::Base
     else
       Order.new
     end
-  end 
+  end
+
+  def items_in_cart
+    @line_items = current_order.line_items
+  end
 
   def categories
     @categories = Category.all
@@ -27,7 +31,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:role])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:role])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:role, :name, :birthday, :address, :city, :zip, :state, :phone])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:role,  :name, :birthday, :address, :city, :zip, :state, :phone])
   end
 end

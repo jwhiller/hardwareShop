@@ -6,7 +6,7 @@ class CartController < ApplicationController
 
 
   if params[:quantity].blank?
-    flash[:error] = "Select quantity for your #{line_item.product.name}!"
+    flash[:error] = "Select quantity for your #{@line_item.product.name}!"
     redirect_to root_url
   else
     line_item = @order.line_items.new(product_id: params[:product_id],
@@ -18,7 +18,7 @@ class CartController < ApplicationController
     redirect_to view_order_path
   end
 
-en
+end
 
   def delete_from_cart
 line_item = LineItem.find(params[:line_item_id])
