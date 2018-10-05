@@ -7,12 +7,22 @@
     <meta chaset="utf-8">
     <meta name="viewpoint" content="width=device-width, initial-scale=1">
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <%= render 'layouts/navbar' %>
+    <div id="flash">
+
+      <% flash.each do |type, message| %>
+        <div class="alert <%= bootstrap_class_for(type)%> fade-in">
+          <button class="close" data-dismiss="alert">X</button>
+          <%= message %>
+        </div>
+      <%end%>
+    </div>
+
     <div class="container">
       <%= yield %>
     </div>
